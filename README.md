@@ -8,6 +8,7 @@ To run it, download the [latest love file](https://github.com/GreffMASTER/tmuf-c
 - Left/Right arrow keys - move cursor to the previous/next challenge
 - Up/Down arrow keys - move selected challenge back/forward in the list
 - PageUp/PageDown - scroll challenge list up/down
+- Delete key - remove selected challenge
 - Number keys (1-5) - select flag
 - Enter - save challenge
 
