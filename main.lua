@@ -2,7 +2,7 @@ _GState = require 'stateman'
 
 _GLibs = {}
 _GFonts = {}
-_GVer = 'a1.1'
+_GVer = 'a1.2'
 
 local l = love
 

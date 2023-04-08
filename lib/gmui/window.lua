@@ -314,6 +314,10 @@ function Window:new(params)
         end
     end
 
+    if params.closable then
+        params.exitbutt.parent = params
+    end
+
     setmetatable(params,self)
     self.__index = self
     return params

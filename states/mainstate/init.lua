@@ -1,7 +1,8 @@
 local ms = {}
 
 local drawer = require 'states.mainstate.drawer'
-local gbxf = require 'states.mainstate.gbxfunc'
+local savef = require 'states.mainstate.savefunc'
+local lmu = require 'lib.lmu'
 local lg = love.graphics
 
 local challenges = {
@@ -35,7 +36,7 @@ local mpressfuncs = {
                 ccount = ccount + 1
             end
         end
-        if ccount > 0 then
+        if ccount then
             w_save.shown = true
             hover = 0
         end
@@ -80,7 +81,7 @@ function ms.draw()
             end
         end
     else
-        lg.printf('Drag your challenge files onto the window.', _GFonts[24], 256, 200, lg.getWidth()-256, 'center')
+        lg.printf('Drag your Challenge files or LMU project file onto the window.', _GFonts[24], 256, 200, lg.getWidth()-256, 'center')
     end
     -- Save window
     if w_save.shown then
@@ -192,8 +193,21 @@ function ms.filedropped(file)
         local challenge = _GLibs.gbx.open(file, false)
         if challenge then
             local cid = challenge.classid
-            if gbxf.isAChallenge(cid) then
+            if savef.isAChallenge(cid) then
                 table.insert(challenges[curflag], challenge)
+            end
+        else
+            local lmuproj, res = lmu.loadLMUFile(file)
+            if res then print(res) end
+            if lmuproj and lmuproj.ftype and lmuproj.ftype == 'TMUF-CC' then
+                w_save.children[1].value = lmuproj.name
+                w_save.children[2].value = lmuproj.ident
+                w_save.children[3].value = lmuproj.index
+                w_save.children[4].selected = lmuproj.unlockorder
+                w_save.children[5].selected = lmuproj.camptype
+                if lmuproj.challenges then
+                    challenges = lmuproj.challenges
+                end
             end
         end
     end
