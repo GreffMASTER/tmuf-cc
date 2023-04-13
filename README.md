@@ -11,6 +11,3 @@ To run it, download the [latest love file](https://github.com/GreffMASTER/tmuf-c
 - Delete key - remove selected challenge
 - Number keys (1-5) - select flag
 - Enter - save challenge
-
-## Possible future features:
-- Save campaign as a project that can be edited later
