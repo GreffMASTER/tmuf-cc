@@ -115,7 +115,7 @@ function gbx.open(rf, readbody)
                     end
                 end
                 gbxobj.userdata = userdatabody
-                printTable(userdatabody)
+                --printTable(userdatabody)
             end
         end
         local numofnodes = fsb.readInt32(rf)
@@ -170,7 +170,7 @@ function gbx.saveCampaign(challenges, params)
             trackcount = trackcount + 1
         end
     end
-    print(trackcount, 'Track(s)')
+    --print(trackcount, 'Track(s)')
     local wf = lfs.newFile(params.name..'.Campaign.Gbx')
     wf:open('w')
     wf:write('GBX')

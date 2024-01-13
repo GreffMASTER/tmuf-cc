@@ -21,15 +21,16 @@ local Thumbnail = function(rf, size, chunkid)
         love.filesystem.remove('Thumbnail.jpg')
         local c = love.graphics.newCanvas(out.thumbnail:getWidth(),out.thumbnail:getHeight())
         c:renderTo(function()
+            love.graphics.push()
             love.graphics.clear(0,0,0,0)
+            love.graphics.scale(120/out.thumbnail:getWidth(), 100/out.thumbnail:getHeight())
             love.graphics.draw(out.thumbnail,0,out.thumbnail:getHeight(),0,1,-1)
+            love.graphics.scale(1,1)
+            love.graphics.pop()
         end)
         out.thumbnail = c
     else
-        out.thumbnail = love.graphics.newCanvas(256,256)
-        out.thumbnail:renderTo(function()
-            love.graphics.clear(1,1,1)
-        end)
+        out.thumbnail = nil
     end
     return out
 end

@@ -55,8 +55,9 @@ function draw.drawChallenge(challenge, sel, x, y, s)
         thumb = challenge.userdata[5].thumbnail
     end
     if thumb then
-        local ts = (thumb:getWidth() / 256) - 1
-        lg.draw(thumb, x+(10*s), y+(10*s), 0, ts+s-(0.08*s), ts+s-(0.22*s))
+        lg.draw(thumb, x+4, y+4)
+    else
+        lg.rectangle('fill', x+4, y+4, 120, 100)
     end
     if sel then
         lg.draw(g_chall_sel, x, y, 0, s, s)
